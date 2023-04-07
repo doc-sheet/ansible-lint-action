@@ -14,5 +14,7 @@ RUN set -xe \
 
 COPY requirements.txt .
 COPY juniper /usr/share/ansible/collections/ansible_collections/juniper
-RUN pip install --no-cache-dir -r requirements.txt
+RUN set -xe \
+	&& pip install --no-cache-dir -r requirements.txt \
+	&& git config --global --add safe.directory \*
 
