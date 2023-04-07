@@ -12,9 +12,7 @@ RUN set -xe \
 	&& apt-get clean --yes -qq \
 	&& rm -rf -- /var/lib/apt/lists/*
 
-RUN pip install --no-cache-dir \
-		ansible==5.10.0 \
-		ansible-core==2.12.10 \
-		ansible-lint==6.13.1
-
+COPY requirements.txt .
 COPY juniper /usr/share/ansible/collections/ansible_collections/juniper
+RUN pip install --no-cache-dir -r requirements.txt
+
