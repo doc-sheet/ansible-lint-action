@@ -16,6 +16,4 @@ COPY requirements.txt galaxy-requirements.yml .
 RUN set -xe \
 	&& pip install --no-cache-dir -r requirements.txt \
 	&& ansible-galaxy collection install --no-cache \
-		--collections-path /usr/share/ansible/collections -r galaxy-requirements.yml \
-	&& rm -rf /root /tmp
-
+		--collections-path /usr/share/ansible/collections -r galaxy-requirements.yml
