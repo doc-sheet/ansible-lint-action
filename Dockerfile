@@ -12,9 +12,10 @@ RUN set -xe \
 	&& apt-get clean --yes -qq \
 	&& rm -rf -- /var/lib/apt/lists/*
 
-COPY requirements.txt .
-COPY juniper /usr/share/ansible/collections/ansible_collections/juniper
+COPY requirements.txt galaxy-requirements.yml .
 RUN set -xe \
 	&& pip install --no-cache-dir -r requirements.txt \
-	&& git config --global --add safe.directory \*
+	&& ansible-galaxy collection install --no-cache \
+		--collections-path /usr/share/ansible/collections -r galaxy-requirements.yml \
+	&& rm -rf /root /tmp
 
