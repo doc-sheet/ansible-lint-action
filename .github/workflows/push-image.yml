@@ -57,7 +57,7 @@ jobs:
           sarif_file: '${{ github.sha }}-trivy-results.sarif'
 
       - name: Run the Anchore Grype scan action
-        uses: anchore/scan-action@4be3c24559b430723e51858969965e163b196957
+        uses: anchore/scan-action@24fd7c9060f3c96848dd1929fac8d796fb5ae4b4
         id: scan
         with:
           image: "${{ steps.meta.outputs.tags }}"
